@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8" />
+  <title>Login Médico - Hospital Vida Nova</title>
+  <link rel="stylesheet" th:href="@{/css/login.css}">
+</head>
+
+<body>
+  <div class="login-container">
+    <h2>Login Médico</h2>
+
+    <form th:action="@{/login/medico}" method="post">
+      <label for="usuarioMed">Matrícula</label>
+      <input type="text" id="usuarioMed" name="usuario" required placeholder="CRM ou CPF" />
+
+      <label for="senhaMed">Senha</label>
+      <input type="password" id="senhaMed" name="senha" required placeholder="Sua senha" />
+
+      <div class="form-actions">
+        <button type="submit">Entrar</button>
+        <button type="reset">Limpar</button>
+      </div>
+
+      <p class="forgot-password">
+        <a href="#" id="forgotPasswordMed">Esqueci minha senha</a>
+      </p>
+    </form>
+  </div>
+
+  <!-- Ajuda -->
+  <button class="help-btn" id="helpBtnMed">
+    <span class="material-icons">help</span>
+  </button>
+
+  <div id="helpModalMed" class="modal">
+    <div class="modal-content">
+      <span class="close" id="closeHelpMed">&times;</span>
+      <h2>Ajuda</h2>
+
+      <div class="tabs">
+        <button class="tab-btn active" data-tab="loginTabMed">Dicas de Login</button>
+        <button class="tab-btn" data-tab="senhaTabMed">Recuperação de Senha</button>
+      </div>
+
+      <div id="loginTabMed" class="tab-content active">
+        <p><strong>Usuário:</strong> Informe seu CRM ou CPF.</p>
+        <p><strong>Senha:</strong> Digite sua senha cadastrada.</p>
+      </div>
+
+      <div id="senhaTabMed" class="tab-content">
+        <p>Para redefinir sua senha, procure o setor de TI.</p>
+      </div>
+    </div>
+  </div>
+
+  <script th:src="@{/js/login-common.js}"></script>
+</body>
+</html>

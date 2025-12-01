@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8" />
+  <title>Painel Médico</title>
+  <link rel="stylesheet" th:href="@{/css/medicoDashboard.css}">
+</head>
+<body>
+  <div class="container">
+    <aside class="sidebar">
+      <h2>Dr. <span th:text="${#authentication.name}">Médico</span></h2>
+      <ul>
+        <li><a th:href="@{/medico/dashboard}">Início</a></li>
+        <li><a href="#">Agendamentos</a></li>
+        <li><a href="#">Meus Horários</a></li>
+        <li><a th:href="@{/logout}">Sair</a></li>
+      </ul>
+    </aside>
+
+    <main class="content">
+      <h1>Bem-vindo, <span th:text="${#authentication.principal.username}">Médico</span></h1>
+      <p>Área administrativa do médico.</p>
+    </main>
+  </div>
+</body>
+</html>

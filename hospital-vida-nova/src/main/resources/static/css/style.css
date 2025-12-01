@@ -1,0 +1,78 @@
+:root{
+  --primary:#0077b6;
+  --primary-2:#00b4d8;
+}
+
+*{ box-sizing: border-box; }
+
+body{
+  font-family: Arial, sans-serif;
+  background: linear-gradient(110deg, var(--primary-2), var(--primary));
+  margin:0; height:100vh;
+  display:flex; align-items:center; justify-content:center;
+}
+
+.container,.login-container{
+  width: 360px; max-width: 92vw;
+  background:#fff; padding:26px 22px;
+  border-radius:14px;
+  box-shadow:0 8px 30px rgba(0,0,0,.18);
+  text-align:center;
+}
+
+h1,h2{ color:var(--primary); margin-top:4px; }
+
+.choices a{
+  display:block; width:100%;
+  padding:12px 10px; margin:10px 0;
+  background:var(--primary-2); color:#fff; text-decoration:none;
+  border-radius:10px; font-weight:700; transition:.25s;
+}
+.choices a:hover{ background:var(--primary); }
+
+form{ display:flex; flex-direction:column; gap:12px; text-align:left; }
+label{ font-weight:700; font-size:14px; color:#333; }
+input{
+  padding:10px 12px; border:1px solid #ccc; border-radius:8px;
+  outline:none; transition:.2s;
+}
+input:focus{ border-color:var(--primary); box-shadow:0 0 0 3px #0077b620; }
+
+.form-actions{ display:flex; gap:10px; }
+button{
+  border:none; border-radius:8px; padding:10px 12px;
+  background:var(--primary-2); color:#fff; font-weight:700; cursor:pointer;
+  transition:.25s;
+}
+button:hover{ background:var(--primary); }
+button[type="reset"]{ background:#94a3b8; }
+button[type="reset"]:hover{ background:#64748b; }
+
+.forgot-password{ text-align:center; margin:6px 0 0; }
+.forgot-password a{ color:var(--primary); text-decoration:none; font-size:14px; }
+.forgot-password a:hover{ text-decoration:underline; }
+
+/* Botão de ajuda (canto inferior esquerdo) */
+.help-btn{
+  position: fixed; left:20px; bottom:20px;
+  width: 46px; height:46px; border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  background:var(--primary); color:#fff; border:none; cursor:pointer;
+  box-shadow:0 6px 18px rgba(0,0,0,.25);
+}
+.help-btn .material-icons{ font-size:24px; }
+
+/* Modal */
+.modal{ display:none; position:fixed; inset:0; background:rgba(0,0,0,.45); z-index:999; }
+.modal-content{
+  width: 420px; max-width:92vw; background:#fff; margin:10vh auto; padding:18px 18px 22px;
+  border-radius:12px; position:relative;
+}
+.close{ position:absolute; right:12px; top:8px; font-size:26px; cursor:pointer; }
+.tabs{ display:flex; gap:6px; border-bottom:1px solid #e5e7eb; margin:10px 0 14px; }
+.tab-btn{
+  flex:1; padding:10px; border:none; border-radius:8px 8px 0 0; cursor:pointer; font-weight:700; background:#f3f4f6;
+}
+.tab-btn.active{ background:var(--primary); color:#fff; }
+.tab-content{ display:none; }
+.tab-content.active{ display:block; }
