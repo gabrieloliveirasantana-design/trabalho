@@ -1,0 +1,100 @@
+/* src/main/resources/static/css/login.css */
+
+/* ------------------------------
+   Variáveis e reset simples
+-------------------------------*/
+:root{
+  --primary:#0077b6;
+  --primary-2:#00b4d8;
+}
+
+*{ box-sizing: border-box; margin:0; padding:0; }
+
+body{
+  font-family: Arial, sans-serif;
+  background: linear-gradient(110deg, var(--primary-2), var(--primary));
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding: 20px;
+}
+
+/* Container reutilizável para formulários/login */
+.login-container, .container {
+  width: 360px; max-width: 92vw;
+  background:#fff; padding:26px 22px;
+  border-radius:14px;
+  box-shadow:0 8px 30px rgba(0,0,0,.18);
+  text-align:center;
+}
+
+/* Títulos */
+h1,h2{ color:var(--primary); margin-bottom:10px; }
+
+/* Links de escolha (página escolher) */
+.choices a{
+  display:block; width:100%;
+  padding:12px 10px; margin:10px 0;
+  background:var(--primary-2); color:#fff; text-decoration:none;
+  border-radius:10px; font-weight:700; transition:.25s;
+}
+.choices a:hover{ background:var(--primary); }
+
+/* Form layout */
+form{ display:flex; flex-direction:column; gap:12px; text-align:left; }
+label{ font-weight:700; font-size:14px; color:#333; }
+input, textarea {
+  padding:10px 12px; border:1px solid #ccc; border-radius:8px;
+  outline:none; transition:.2s; font-size:14px;
+}
+input:focus, textarea:focus{ border-color:var(--primary); box-shadow:0 0 0 3px #0077b620; }
+
+.form-actions{ display:flex; gap:10px; justify-content:center; }
+button{
+  border:none; border-radius:8px; padding:10px 16px;
+  background:var(--primary-2); color:#fff; font-weight:700; cursor:pointer;
+  transition:.25s;
+}
+button:hover{ background:var(--primary); }
+button[type="reset"]{ background:#94a3b8; }
+button[type="reset"]:hover{ background:#64748b; }
+
+/* small helper */
+.forgot-password{ text-align:center; margin-top:6px; }
+.forgot-password a{ color:var(--primary); text-decoration:none; }
+.forgot-password a:hover{ text-decoration:underline; }
+
+/* help button */
+.help-btn{
+  position: fixed; left:20px; bottom:20px;
+  width: 46px; height:46px; border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  background:var(--primary); color:#fff; border:none; cursor:pointer;
+  box-shadow:0 6px 18px rgba(0,0,0,.25);
+}
+.help-btn .material-icons{ font-size:24px; }
+
+/* modal */
+.modal{ display:none; position:fixed; inset:0; background:rgba(0,0,0,.45); z-index:999; }
+.modal-content{
+  width: 420px; max-width:92vw; background:#fff; margin:10vh auto; padding:18px 18px 22px;
+  border-radius:12px; position:relative;
+}
+.close{ position:absolute; right:12px; top:8px; font-size:26px; cursor:pointer; }
+
+/* tabs */
+.tabs{ display:flex; gap:6px; border-bottom:1px solid #e5e7eb; margin:10px 0 14px; }
+.tab-btn{ flex:1; padding:10px; border:none; border-radius:8px 8px 0 0; cursor:pointer; font-weight:700; background:#f3f4f6; }
+.tab-btn.active{ background:var(--primary); color:#fff; }
+.tab-content{ display:none; }
+.tab-content.active{ display:block; }
+
+/* dashboard basic */
+.sidebar{ width:220px; padding:18px; background:#f8fafc; border-radius:12px; }
+.content{ padding:18px; flex:1; }
+.container{ display:flex; gap:18px; align-items:flex-start; }
+@media (max-width:800px){
+  .container{ flex-direction:column; }
+  .sidebar{ width:100%; }
+}

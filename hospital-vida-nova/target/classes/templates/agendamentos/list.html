@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8" />
+  <title>Agendamentos</title>
+  <link rel="stylesheet" th:href="@{/css/medicoDashboard.css}" />
+</head>
+<body>
+  <div class="container">
+    <aside class="sidebar"> ... <!-- pode incluir fragment --> </aside>
+
+    <main class="content">
+      <h1>Agendamentos</h1>
+      <a th:href="@{/agendamentos/novo}">Novo agendamento</a>
+
+      <table>
+        <thead><tr><th>ID</th><th>Paciente</th><th>Médico</th><th>Data/Hora</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr th:each="a : ${lista}">
+            <td th:text="${a.id}">1</td>
+            <td th:text="${a.pacienteNome}">Paciente</td>
+            <td th:text="${a.medicoNome}">Médico</td>
+            <td th:text="${a.dataHora}">2025-..</td>
+            <td th:text="${a.status}">AGENDADO</td>
+          </tr>
+        </tbody>
+      </table>
+    </main>
+  </div>
+</body>
+</html>

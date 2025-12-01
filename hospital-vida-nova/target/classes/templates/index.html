@@ -1,0 +1,18 @@
+<!-- src/main/resources/templates/index.html -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pt-BR">
+  <head th:replace="fragments/layout :: head('Hospital Vida Nova')"></head>
+  <body>
+    <div th:replace="fragments/layout :: header"></div>
+
+    <div class="container">
+      <div style="text-align:center; margin:auto;">
+        <h1>Escolha como deseja entrar</h1>
+        <a th:href="@{/login/medico}" class="btn">Login Médico</a>
+        <a th:href="@{/login/paciente}" class="btn">Login Paciente</a>
+      </div>
+    </div>
+
+    <div th:replace="fragments/layout :: footer"></div>
+  </body>
+</html>

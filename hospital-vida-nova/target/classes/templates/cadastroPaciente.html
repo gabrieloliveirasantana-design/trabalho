@@ -1,0 +1,30 @@
+<!-- src/main/resources/templates/cadastro-paciente.html -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pt-BR">
+  <head th:replace="fragments/layout :: head('Cadastro Paciente')"></head>
+  <body>
+    <div th:replace="fragments/layout :: header"></div>
+
+    <div class="login-container">
+      <h2>Cadastrar Paciente</h2>
+      <form th:action="@{/cadastro/salvar}" method="post" th:object="${usuario}">
+        <label>Nome</label>
+        <input type="text" th:field="*{nome}" required>
+
+        <label>Username (CPF/email)</label>
+        <input type="text" th:field="*{username}" required>
+
+        <label>Senha</label>
+        <input type="password" th:field="*{password}" required>
+
+        <input type="hidden" th:field="*{role}" value="ROLE_PACIENTE">
+
+        <div class="form-actions">
+          <button type="submit">Cadastrar</button>
+        </div>
+      </form>
+    </div>
+
+    <div th:replace="fragments/layout :: footer"></div>
+  </body>
+</html>

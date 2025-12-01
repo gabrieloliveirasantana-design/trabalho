@@ -1,0 +1,50 @@
+<!-- src/main/resources/templates/login/login-medico.html -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pt-BR">
+  <head th:replace="fragments/layout :: head('Login Médico')"></head>
+  <body>
+    <div th:replace="fragments/layout :: header"></div>
+
+    <div class="login-container">
+      <h2>Login Médico</h2>
+
+      <!-- Para o Spring Security funcionar, 'username' e 'password' devem ser os names -->
+      <form th:action="@{/login}" method="post">
+        <label for="username">CRM / CPF</label>
+        <input id="username" name="username" type="text" required placeholder="CRM ou CPF"/>
+
+        <label for="password">Senha</label>
+        <input id="password" name="password" type="password" required placeholder="Sua senha"/>
+
+        <div class="form-actions">
+          <button type="submit">Entrar</button>
+          <button type="reset">Limpar</button>
+        </div>
+
+        <p class="forgot-password"><a href="#">Esqueci minha senha</a></p>
+      </form>
+    </div>
+
+    <!-- help -->
+    <button class="help-btn" id="helpBtnMed"><span class="material-icons">help</span></button>
+    <div id="helpModalMed" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Ajuda</h2>
+        <div class="tabs">
+          <button class="tab-btn active" data-tab="loginTabMed">Dicas de Login</button>
+          <button class="tab-btn" data-tab="senhaTabMed">Recuperação</button>
+        </div>
+        <div id="loginTabMed" class="tab-content active">
+          <p>Use seu CRM ou CPF.</p>
+        </div>
+        <div id="senhaTabMed" class="tab-content">
+          <p>Procure o setor de TI para redefinição.</p>
+        </div>
+      </div>
+    </div>
+
+    <script th:src="@{/js/login-common.js}"></script>
+    <div th:replace="fragments/layout :: footer"></div>
+  </body>
+</html>

@@ -1,0 +1,20 @@
+<!-- src/main/resources/templates/login/escolher.html -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head th:replace="fragments/layout :: head('Escolha Login')"></head>
+  <body>
+    <div th:replace="fragments/layout :: header"></div>
+
+    <div class="container login-container" style="text-align:center;">
+      <h1>Escolha como deseja entrar</h1>
+      <div class="choices">
+        <a th:href="@{/login/medico}">Login Médico</a>
+        <a th:href="@{/login/paciente}">Login Paciente</a>
+        <a th:href="@{/cadastro/medico}">Cadastrar Médico</a>
+        <a th:href="@{/cadastro/paciente}">Cadastrar Paciente</a>
+      </div>
+    </div>
+
+    <div th:replace="fragments/layout :: footer"></div>
+  </body>
+</html>
