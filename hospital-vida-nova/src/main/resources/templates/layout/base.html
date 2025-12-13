@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:replace="${title}">Hospital Vida Nova</title>
+
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<div th:replace="layout/navbar :: navbar"></div>
+
+<!-- CONTEÚDO DINÂMICO -->
+<div class="content" style="width: 100%; display: flex; flex-direction: column; align-items: center;">
+    <div th:replace="${content}"></div>
+</div>
+
+</body>
+</html>

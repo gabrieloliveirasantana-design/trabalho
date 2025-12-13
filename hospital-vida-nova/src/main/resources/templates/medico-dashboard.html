@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="pt-BR"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/extras/spring-security">
+
+<head>
+    <meta charset="UTF-8"/>
+    <title>Hospital Vida Nova - Painel do Médico</title>
+
+    <!-- CSS LOCAL -->
+    <link rel="stylesheet" th:href="@{/css/medicoDashboard.css}"/>
+
+    <!-- ÍCONES -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+</head>
+
+<body>
+<div class="container">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+        <h2 id="homeLink">Hospital Vida Nova</h2>
+
+        <ul class="menu">
+            <!-- AGENDAMENTOS -->
+            <li class="menu-item has-submenu">
+                <div class="menu-head">
+                    <span class="material-icons icon">event_available</span>
+                    <span>Agendamentos</span>
+                    <span class="material-icons caret">expand_more</span>
+                </div>
+                <ul class="submenu">
+                    <li class="submenu-item" data-section="ag-calendario">Calendário</li>
+                    <li class="submenu-item" data-section="ag-novo">Novo Agendamento</li>
+                    <li class="submenu-item" data-section="ag-horarios">Meus Horários</li>
+                </ul>
+            </li>
+
+            <!-- RELATÓRIOS -->
+            <li class="menu-item has-submenu">
+                <div class="menu-head">
+                    <span class="material-icons icon">analytics</span>
+                    <span>Relatórios</span>
+                    <span class="material-icons caret">expand_more</span>
+                </div>
+                <ul class="submenu">
+                    <li class="submenu-item" data-section="rel-emitir">Emitir</li>
+                    <li class="submenu-item" data-section="rel-historico">Meus Relatórios</li>
+                </ul>
+            </li>
+        </ul>
+    </aside>
+
+    <!-- CONTEÚDO -->
+    <main class="content">
+
+        <!-- TOPBAR -->
+        <header class="topbar">
+            <div class="profile-menu">
+                <span class="material-icons perfil" id="profileIcon">account_circle</span>
+
+                <ul class="dropdown" id="profileDropdown">
+                    <li>
+                        <span class="material-icons">person</span>
+                        <span sec:authentication="name"></span>
+                    </li>
+                    <li>
+                        <form th:action="@{/logout}" method="post">
+                            <button type="submit"
+                                    style="background:none;border:none;cursor:pointer;display:flex;gap:8px;">
+                                <span class="material-icons">logout</span>
+                                Sair
+                            </button>
+                        </form>
+                    </li>
+                </ul>
+            </div>
+        </header>
+
+        <!-- DASHBOARD -->
+        <section class="dashboard">
+            <h1>Bem-vindo ao seu painel, Doutor!</h1>
+
+            <div id="dashboardContent">
+
+                <!-- HOME -->
+                <div class="section active" id="inicio">
+                    <h2>Resumo Geral</h2>
+                    <p>Acompanhe agendamentos e relatórios.</p>
+                </div>
+
+                <!-- CALENDÁRIO -->
+                <div class="section" id="ag-calendario">
+                    <h2>Calendário Semanal</h2>
+
+                    <table class="calendar-table">
+                        <thead>
+                        <tr>
+                            <th>Horário</th>
+                            <th>Segunda</th>
+                            <th>Terça</th>
+                            <th>Quarta</th>
+                            <th>Quinta</th>
+                            <th>Sexta</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>08:00</td>
+                            <td th:each="agendamento : ${agendamentos}" 
+                                th:if="${agendamento.data == T(java.time.LocalDate).now().with(DayOfWeek.MONDAY)}">
+                                <!-- Exibe os agendamentos de segunda-feira, 08:00 -->
+                                <span th:text="${agendamento.paciente.nome}"></span>
+                            </td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>09:00</td>
+                            <td th:each="agendamento : ${agendamentos}" 
+                                th:if="${agendamento.data == T(java.time.LocalDate).now().with(DayOfWeek.TUESDAY)}">
+                                <!-- Exibe os agendamentos de terça-feira, 09:00 -->
+                                <span th:text="${agendamento.paciente.nome}"></span>
+                            </td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <!-- Continue para os outros horários -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- NOVO AGENDAMENTO -->
+                <div class="section" id="ag-novo">
+                    <h2>Novo Agendamento</h2>
+
+                    <form th:action="@{/agendamentos/agendamento/salvar}" method="post" class="appointment-form">
+                        <div class="form-group">
+                            <label>Paciente</label>
+                            <input type="text" name="paciente.nome" placeholder="Nome do paciente" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Data</label>
+                            <input type="date" name="data" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Hora</label>
+                            <input type="time" name="hora" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Observações</label>
+                            <textarea name="observacoes" rows="4" placeholder="Observações do atendimento"></textarea>
+                        </div>
+
+                        <button type="submit">Salvar Agendamento</button>
+                    </form>
+                </div>
+
+            </div>
+        </section>
+    </main>
+</div>
+
+<!-- JS LOCAL -->
+<script th:src="@{/js/medico-dashboard.js}"></script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8" />
+  <title>Login Paciente - Hospital Vida Nova</title>
+  <link rel="stylesheet" th:href="@{/css/login.css}" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+</head>
+<body>
+  <div class="login-container" role="main" aria-labelledby="loginTitle">
+    <h2 id="loginTitle">Login Paciente</h2>
+
+    <!-- Formulário enviado ao endpoint /login (Spring Security) -->
+    <form th:action="@{/login}" method="post" id="loginFormPaciente" novalidate>
+      <!-- opcional: enviar role para UX, não altera autorização -->
+      <input type="hidden" name="role" value="PACIENTE" />
+
+      <label for="username">Usuário</label>
+      <input type="text" id="username" name="username" required placeholder="Seu usuário" />
+
+      <label for="password">Senha</label>
+      <input type="password" id="password" name="password" required placeholder="Sua senha" />
+
+      <div class="form-actions">
+        <button type="submit">Entrar</button>
+        <button type="reset">Limpar</button>
+      </div>
+
+      <p class="forgot-password">
+        <a href="#" id="forgotPasswordPac">Esqueci minha senha</a>
+      </p>
+
+      <p th:if="${param.error}" class="alert-error">Usuário ou senha incorretos.</p>
+      <p th:if="${param.logout}" class="alert-success">Logout realizado com sucesso.</p>
+    </form>
+  </div>
+
+  <!-- Botão de ajuda (canto inferior esquerdo) -->
+  <button class="help-btn" id="helpBtnPac" aria-label="Ajuda">
+    <span class="material-icons">help</span>
+  </button>
+
+  <!-- Modal de Ajuda com abas -->
+  <div id="helpModalPac" class="modal" aria-hidden="true">
+    <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="tituloAjudaPac">
+      <button class="close" id="closeHelpPac" aria-label="Fechar">&times;</button>
+      <h2 id="tituloAjudaPac">Ajuda</h2>
+
+      <div class="tabs" role="tablist">
+        <button class="tab-btn active" data-tab="loginTabPac" role="tab" aria-selected="true">Dicas de Login</button>
+        <button class="tab-btn" data-tab="senhaTabPac" role="tab" aria-selected="false">Recuperação de Senha</button>
+      </div>
+
+      <div id="loginTabPac" class="tab-content active" role="tabpanel">
+        <p><strong>Usuário:</strong> Informe seu CPF/usuário.</p>
+        <p><strong>Senha:</strong> Digite a senha cadastrada.</p>
+      </div>
+
+      <div id="senhaTabPac" class="tab-content" role="tabpanel">
+        <p>Para recuperar a senha, siga as instruções do e-mail cadastrado ou procure nossa Central de Atendimento.</p>
+      </div>
+    </div>
+  </div>
+
+  <script th:src="@{/js/login-pacientes.js}"></script>
+</body>
+</html>

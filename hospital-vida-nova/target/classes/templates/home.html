@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8" />
+  <title>Hospital Vida Nova</title>
+  <!-- use th:href para resolver corretamente o caminho estático -->
+  <link rel="stylesheet" th:href="@{/css/login.css}" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+<body>
+  <div class="container">
+    <h1>Hospital Vida Nova</h1>
+
+    <p style="color:#444; margin:8px 0 18px;">
+      Escolha como deseja entrar no sistema:
+    </p>
+
+    <div class="choices">
+  <a th:href="@{/login/medico}">Sou Médico</a>
+  <a th:href="@{/login/paciente}">Sou Paciente</a>
+</div>
+
+  </div>
+</body>
+</html>

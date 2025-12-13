@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Login Médico - Hospital Vida Nova</title>
+
+  <!-- Caminho correto para Spring Boot -->
+  <link rel="stylesheet" href="/css/login.css" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+</head>
+
+<body>
+  <div class="login-container">
+    <h2>Login Médico</h2>
+
+    <!-- FORMULÁRIO COMPATÍVEL COM SPRING SECURITY -->
+    <form method="post" action="/login">
+
+      <label for="username">Matrícula</label>
+      <input
+        type="text"
+        id="username"
+        name="username"
+        required
+        placeholder="CRM ou CPF"
+      />
+
+      <label for="password">Senha</label>
+      <input
+        type="password"
+        id="password"
+        name="password"
+        required
+        placeholder="Sua senha"
+      />
+
+      <!-- MENSAGEM DE ERRO -->
+      <div style="color:red; font-size:14px;">
+        <span th:if="${param.error}">
+          Usuário ou senha inválidos
+        </span>
+      </div>
+
+      <div class="form-actions">
+        <button type="submit">Entrar</button>
+        <button type="reset">Limpar</button>
+      </div>
+
+      <p class="forgot-password">
+        <a href="#">Esqueci minha senha</a>
+      </p>
+    </form>
+  </div>
+
+  <!-- Botão de ajuda -->
+  <button class="help-btn" aria-label="Ajuda">
+    <span class="material-icons">help</span>
+  </button>
+
+</body>
+</html>

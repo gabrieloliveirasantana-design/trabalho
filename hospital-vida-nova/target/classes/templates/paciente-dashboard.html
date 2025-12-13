@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Hospital Vida Nova - Painel do Paciente</title>
+
+    <link rel="stylesheet" th:href="@{/css/pacientesDashboard.css}"/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+</head>
+
+<body>
+<div class="container">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <h2 id="homeLink">Hospital Vida Nova</h2>
+        <ul>
+            <li class="menu-item" data-section="inicio">
+                <span class="material-icons">home</span> Início
+            </li>
+            <li class="menu-item" data-section="consultas">
+                <span class="material-icons">event</span> Minhas Consultas
+            </li>
+            <li class="menu-item" data-section="exames">
+                <span class="material-icons">science</span> Exames
+            </li>
+            <li class="menu-item" data-section="planos">
+                <span class="material-icons">health_and_safety</span> Planos
+            </li>
+            <li class="menu-item" data-section="suporte">
+                <span class="material-icons">support</span> Suporte
+            </li>
+        </ul>
+    </aside>
+
+    <!-- Conteúdo -->
+    <main class="content">
+
+        <!-- Topbar -->
+        <header class="topbar">
+            <div class="profile-menu">
+                <span class="material-icons perfil" id="profileIcon">account_circle</span>
+
+                <ul class="dropdown" id="profileDropdown">
+                    <li>
+                        <span class="material-icons">person</span>
+                        <span th:text="${#authentication.name}">Paciente</span>
+                    </li>
+
+                    <li>
+                        <form th:action="@{/logout}" method="post">
+                            <button type="submit" class="logout-btn">
+                                <span class="material-icons">logout</span> Sair
+                            </button>
+                        </form>
+                    </li>
+                </ul>
+            </div>
+        </header>
+
+        <!-- Dashboard -->
+        <section class="dashboard">
+            <h1>Bem-vindo, Paciente!</h1>
+
+            <div id="dashboardContent">
+
+                <div class="section active" id="inicio">
+                    <h2>Anúncios e Novidades</h2>
+
+                    <div class="ads-grid">
+                        <article class="ad-card">
+                            <h3>Plano Ouro</h3>
+                            <p>20% OFF em consultas.</p>
+                            <button class="ad-cta">Saiba mais</button>
+                        </article>
+
+                        <article class="ad-card">
+                            <h3>Plano Familiar</h3>
+                            <p>Cobertura para toda a família.</p>
+                            <button class="ad-cta">Conferir</button>
+                        </article>
+                    </div>
+                </div>
+
+                <div class="section" id="consultas">
+                    <h2>Minhas Consultas</h2>
+                    <p>Consultas agendadas aparecerão aqui.</p>
+                </div>
+
+                <div class="section" id="exames">
+                    <h2>Exames</h2>
+                    <p>Resultados de exames.</p>
+                </div>
+
+                <div class="section" id="planos">
+                    <h2>Planos</h2>
+                    <p>Informações sobre planos.</p>
+                </div>
+
+                <div class="section" id="suporte">
+                    <h2>Suporte</h2>
+                    <p>Entre em contato conosco.</p>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+</div>
+
+<script th:src="@{/js/paciente-dashboard.js}"></script>
+</body>
+</html>

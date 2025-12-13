@@ -1,0 +1,161 @@
+/* ======= ESTILO GERAL ======= */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Segoe UI", Roboto, Arial, sans-serif;
+    background: #f0f4f8;
+    color: #333;
+}
+
+/* Centralizar páginas */
+body > * {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Títulos */
+h2, h3 {
+    color: #0a4fa3;
+    margin-top: 20px;
+    font-weight: 600;
+}
+
+/* ======= FORMULÁRIOS ======= */
+
+form {
+    background: #ffffff;
+    padding: 25px 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    width: 100%;
+    max-width: 340px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+form label {
+    font-size: 14px;
+    color: #0a4fa3;
+    font-weight: 600;
+}
+
+form input,
+form select,
+form textarea {
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #d1d9e6;
+    border-radius: 6px;
+    outline: none;
+    transition: 0.2s;
+}
+
+form input:focus,
+form select:focus,
+form textarea:focus {
+    border-color: #0a4fa3;
+    box-shadow: 0 0 4px rgba(10, 79, 163, 0.3);
+}
+
+button, .btn {
+    padding: 10px;
+    background: #0a4fa3;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover, .btn:hover {
+    background: #083c7a;
+}
+
+/* ======= MENU SUPERIOR ======= */
+nav {
+    width: 100%;
+    background: #0a4fa3;
+    color: white;
+    padding: 12px 0;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: 0.2s;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+/* ======= TABELAS ======= */
+
+table {
+    margin-top: 20px;
+    border-collapse: collapse;
+    width: 95%;
+    max-width: 900px;
+    background: white;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+table th {
+    background: #0a4fa3;
+    color: white;
+    padding: 12px;
+    font-size: 15px;
+}
+
+table td {
+    padding: 10px;
+    border-bottom: 1px solid #e6e6e6;
+}
+
+table tr:hover {
+    background: #eef5ff;
+}
+
+/* Responsividade */
+@media (max-width: 700px) {
+    table {
+        font-size: 14px;
+    }
+
+    table th, table td {
+        padding: 8px;
+    }
+}
+
+/* ======= MENSAGENS ======= */
+
+.alert-error {
+    color: #b30000;
+    font-weight: bold;
+}
+
+.alert-success {
+    color: green;
+    font-weight: bold;
+}
+
+/* ======= CAIXAS ======= */
+.card {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 8px rgba(0,0,0,0.07);
+    margin-top: 15px;
+    width: 90%;
+    max-width: 600px;
+}
